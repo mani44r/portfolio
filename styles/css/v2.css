@@ -23,7 +23,8 @@
     --font-mono: 'JetBrains Mono', 'SFMono-Regular', monospace;
 
     --gutter: clamp(20px, 4vw, 64px);
-    --radius: 24px;
+    --radius: 20px;
+    --radius-sm: 12px;
 }
 
 * {
