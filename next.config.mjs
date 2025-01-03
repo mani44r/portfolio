@@ -5,6 +5,8 @@ const nextConfig = {
   typescript: { ignoreBuildErrors: false },
   // Allow Supabase storage + R2 media as plain <img> (we keep markup identical, no next/image).
   images: { unoptimized: true },
+  // Compress responses
+  compress: true,
   // Static chaicode microsites (cursor, mintlify, february) live in /public.
   // Their asset paths were absolutised, so we just serve index.html at the
   // clean URL (no trailing slash — avoids Next's slash-normalisation loop).
