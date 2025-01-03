@@ -1,5 +1,7 @@
 # Deploy Manikanta Portfolio
 
+> Last updated: Jan 2025
+
 Production build verified: `npm run build`
 
 ## Fastest: Vercel (recommended)
