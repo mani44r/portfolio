@@ -43,12 +43,30 @@ window.scrollTo(0, 0);
 
     const countDur = fullMode ? 1.7 : 0.5;
     const speed = { v: 0 };
+
+    // Count 0 → 44, pause 0.3s on 44 (favourite number), then continue to 100
+    const firstLeg  = fullMode ? 0.75 : 0.22;
+    const secondLeg = fullMode ? 0.95 : 0.28;
+
     gsap.to(speed, {
-        v: 100,
-        duration: countDur,
-        ease: 'power2.inOut',
+        v: 44,
+        duration: firstLeg,
+        ease: 'power2.in',
         onUpdate: () => {
             if (counterEl) counterEl.textContent = String(Math.round(speed.v)).padStart(3, '0');
+        },
+        onComplete: () => {
+            if (counterEl) counterEl.textContent = '044';
+            gsap.delayedCall(0.3, () => {
+                gsap.to(speed, {
+                    v: 100,
+                    duration: secondLeg,
+                    ease: 'power2.out',
+                    onUpdate: () => {
+                        if (counterEl) counterEl.textContent = String(Math.round(speed.v)).padStart(3, '0');
+                    },
+                });
+            });
         },
     });
     gsap.to('.loader-line i', { scaleX: 1, duration: countDur, ease: 'power2.inOut' });
