@@ -1,10 +1,22 @@
-document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener("click", function(e) {
-        e.preventDefault();
+const container = document.getElementById("projectContainer");
 
-        document.querySelector(this.getAttribute("href"))
-            .scrollIntoView({
-                behavior: "smooth"
-            });
-    });
+projects.forEach(project => {
+
+    container.innerHTML += `
+    
+    <div class="project-card">
+        <img src="${project.image}" alt="${project.title}">
+        
+        <h3>${project.title}</h3>
+        
+        <p>${project.description}</p>
+        
+        <span>${project.tech}</span>
+        
+        <a href="${project.github}" target="_blank">
+            GitHub →
+        </a>
+    </div>
+    
+    `;
 });
