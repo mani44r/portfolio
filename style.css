@@ -1,36 +1,43 @@
-.timeline{
-    max-width:800px;
-    margin:auto;
+#projectContainer{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(350px,1fr));
+    gap:30px;
 }
 
-.timeline-item{
+.project-card{
     background:#1e293b;
-    padding:20px;
-    margin-bottom:20px;
-    border-left:4px solid #38bdf8;
-    border-radius:10px;
+    border-radius:15px;
+    overflow:hidden;
+    transition:0.4s;
 }
 
-.timeline-item h3{
-    margin-bottom:5px;
+.project-card:hover{
+    transform:translateY(-10px);
 }
 
-.timeline-item span{
+.project-card img{
+    width:100%;
+    height:220px;
+    object-fit:cover;
+}
+
+.project-card h3{
+    padding:15px;
+}
+
+.project-card p{
+    padding:0 15px;
+}
+
+.project-card span{
+    display:block;
     color:#38bdf8;
+    padding:15px;
 }
 
-.achievement-card{
-    background:#1e293b;
-    padding:20px;
-    margin:20px 0;
-    border-radius:10px;
-}
-
-.btn{
+.project-card a{
     display:inline-block;
-    margin-top:20px;
-}
-
-#resume{
-    text-align:center;
+    margin:15px;
+    text-decoration:none;
+    color:#38bdf8;
 }
