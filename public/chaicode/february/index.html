@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>February 2026 - Valentine's Special</title>
+    <link rel="icon" type="image/png" href="/favicon-96x96.png" sizes="96x96" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="shortcut icon" href="/favicon.ico" />
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Nunito:wght@400;600;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #d32f2f; /* Deep Red */
+            --secondary-color: #ff8fa3; /* Soft Pink */
+            --bg-gradient: linear-gradient(135deg, #fff0f3 0%, #fff5f8 100%);
+            --card-bg: rgba(255, 255, 255, 0.9);
+            --text-main: #4a4a4a;
+            --heart-color: #ff4d6d;
+            --highlight-color: #ffe0e6;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Nunito', sans-serif;
+            background: var(--bg-gradient);
+            color: var(--text-main);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow-x: hidden;
+            padding: 2rem;
+            position: relative;
+        }
+
+        /* Floating Hearts Background Animation */
+        .bg-hearts {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            z-index: -1;
+            pointer-events: none;
+        }
+
+        .bg-heart {
+            position: absolute;
+            font-size: 2rem;
+            color: rgba(255, 77, 109, 0.1);
+            animation: floatUp 15s linear infinite;
+        }
+
+        @keyframes floatUp {
+            0% { transform: translateY(100vh) scale(0.5); opacity: 0; }
+            50% { opacity: 0.5; }
+            100% { transform: translateY(-10vh) scale(1); opacity: 0; }
+        }
+
+        .main-card {
+            background: var(--card-bg);
+            backdrop-filter: blur(10px);
+            border-radius: 30px;
+            box-shadow: 0 20px 60px rgba(255, 77, 109, 0.15);
+            padding: 3rem;
+            width: 100%;
+            max-width: 1200px;
+            display: grid;
+            grid-template-columns: 1fr 2fr; /* Events Left (smaller), Calendar Right (larger) */
+            gap: 4rem;
+            border: 2px solid #fff;
+            position: relative;
+            overflow: hidden;
+            align-items: center;
+        }
+
+        /* Decorative Envelope Flap Effect - Moved to left top corner for balance */
+        .main-card::before {
+            content: '';
+            position: absolute;
+            top: -50px;
+            left: -50px;
+            width: 150px;
+            height: 150px;
+            background: var(--secondary-color);
+            border-radius: 50%;
+            opacity: 0.2;
+        }
+
+        /* --- Left Column: Events --- */
+        .events-column {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100%;
+            border-right: 1px dashed rgba(211, 47, 47, 0.2);
+            padding-right: 2rem;
+        }
+
+        /* Event List Styling */
+        .event-list {
+            list-style: none;
+            text-align: left;
+            width: 100%;
+            font-size: 0.95rem;
+            line-height: 1.8;
+            /* background: rgba(255, 255, 255, 0.6); */
+            padding: 1rem;
+            border-radius: 15px;
+            /* box-shadow: 0 4px 15px rgba(0,0,0,0.05); */
+        }
+
+        .event-list li {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 0.8rem;
+            border-bottom: 1px dotted rgba(211, 47, 47, 0.3);
+            padding-bottom: 0.2rem;
+        }
+
+        .event-list li:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+            font-weight: 700;
+            color: var(--primary-color);
+            font-size: 1.1rem;
+            margin-top: 1rem;
+        }
+
+        .event-date {
+            font-weight: 700;
+            color: var(--primary-color);
+            margin-right: 1rem;
+        }
+
+        .event-name {
+            color: #555;
+            text-align: right;
+        }
+
+        /* --- Right Column: Title, Heart, Calendar --- */
+        .calendar-column {
+            display: flex;
+            flex-direction: column;
+            justify-content: top;
+            align-items: center;
+            text-align: center;
+        }
+
+        .month-name {
+            font-family: 'Great Vibes', cursive;
+            font-size: 5rem;
+            color: var(--primary-color);
+            line-height: 1;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+            margin-bottom: 0.5rem;
+        }
+
+        .year-text {
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem;
+            color: var(--text-main);
+            letter-spacing: 0.2rem;
+            margin-bottom: 1rem;
+        }
+
+        .illustration {
+            width: 100px;
+            margin: 0 auto 2rem auto;
+            position: relative;
+        }
+        
+        /* Heart Beat Animation */
+        .heart-beat {
+            animation: beat 1.5s infinite;
+            transform-origin: center;
+        }
+        
+        @keyframes beat {
+            0% { transform: scale(1); }
+            14% { transform: scale(1.1); }
+            28% { transform: scale(1); }
+            42% { transform: scale(1.1); }
+            70% { transform: scale(1); }
+        }
+
+        /* Calendar Table */
+        table {
+            width: 100%;
+            border-collapse: separate; 
+            border-spacing: 0.8rem; /* Use border-spacing to physically separate cells */
+            max-width: 600px;
+        }
+
+        thead th {
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            color: var(--primary-color); /* Make headers red too as per user hint? "Red" headers looks nice */
+            padding-bottom: 0.5rem;
+            font-weight: 700;
+        }
+
+        tbody td {
+            text-align: center;
+            vertical-align: middle;
+            height: 3rem;
+            width: 3rem;
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--text-main);
+            position: relative;
+            transition: all 0.3s ease;
+            /* Removing border-radius here, applied to inner span if needed or just keep cell round */
+            border-radius: 50%; /* Make the cell itself round */
+        }
+        
+        /* Helper to ensure perfect circles */
+        .date-number {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 70%;
+            height: 100%;
+            border-radius: 50%;
+        }
+
+        /* Hover effect on dates */
+        tbody td:not(:empty):hover .date-number {
+             background-color: #fff0f3;
+             cursor: pointer;
+             color: var(--primary-color);
+        }
+
+        /* Valentine Week Highlight - Individual circles */
+        .valentine-week .date-number {
+            background-color: var(--highlight-color);
+            color: var(--primary-color);
+            font-weight: 700;
+        }
+        
+        .valentine-day .date-number {
+            background-color: var(--primary-color);
+            color: white !important;
+            box-shadow: 0 4px 10px rgba(211, 47, 47, 0.4);
+            transform: scale(1.1);
+        }
+
+        /* Empty cells */
+        td:empty {
+            pointer-events: none;
+        }
+
+        /* Sunday Color */
+        tbody td:nth-child(1), thead th:nth-child(1) {
+            color: var(--primary-color);
+        }
+
+        /* Validations for screen size */
+        @media (max-width: 900px) {
+            .main-card {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+                padding: 2rem;
+            }
+            .events-column {
+                border-right: none;
+                border-bottom: 1px dashed rgba(211, 47, 47, 0.2);
+                padding-right: 0;
+                padding-bottom: 2rem;
+                order: 2; /* Put events below on mobile? Or above? Let's keep above as user requested "Left side" which usually means first */
+                order: 1; 
+            }
+            .calendar-column {
+                order: 2;
+            }
+            .month-name {
+                font-size: 4rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="bg-hearts">
+        <span class="bg-heart" style="left: 10%; animation-delay: 0s;">&#10084;</span>
+        <span class="bg-heart" style="left: 30%; animation-delay: 2s;">&#10084;</span>
+        <span class="bg-heart" style="left: 70%; animation-delay: 4s;">&#10084;</span>
+        <span class="bg-heart" style="left: 90%; animation-delay: 1s;">&#10084;</span>
+        <span class="bg-heart" style="left: 50%; animation-delay: 3s;">&#10084;</span>
+        <span class="bg-heart" style="left: 20%; animation-delay: 5s;">&#10084;</span>
+        <span class="bg-heart" style="left: 80%; animation-delay: 2.5s;">&#10084;</span>
+    </div>
+
+    <div class="main-card">
+        <!-- Left Column: Events -->
+        <div class="events-column">
+            <ul class="event-list">
+                <li><span class="event-date">7 Feb</span> <span class="event-name">Rose Day</span></li>
+                <li><span class="event-date">8 Feb</span> <span class="event-name">Propose Day</span></li>
+                <li><span class="event-date">9 Feb</span> <span class="event-name">Chocolate Day</span></li>
+                <li><span class="event-date">10 Feb</span> <span class="event-name">Teddy Day</span></li>
+                <li><span class="event-date">11 Feb</span> <span class="event-name">Promise Day</span></li>
+                <li><span class="event-date">12 Feb</span> <span class="event-name">Hug Day</span></li>
+                <li><span class="event-date">13 Feb</span> <span class="event-name">Kiss Day</span></li>
+                <li><span class="event-date">14 Feb</span> <span class="event-name">Valentine's Day</span></li>
+            </ul>
+        </div>
+
+        <!-- Right Column: Title, Heart, Calendar -->
+        <div class="calendar-column">
+            
+            <h1 class="month-name">February</h1>
+            <div class="year-text">2026</div>
+
+            <div class="illustration heart-beat">
+                <!-- Simple Vector Heart Icon -->
+                <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" fill="#ff4d6d"/>
+                    <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" fill="#d32f2f" transform="translate(4,4) scale(0.6)" opacity="0.6"/>
+                </svg>
+            </div>
+
+            <table>
+                <thead>
+                    <tr>
+                        <th>Sun</th>
+                        <th>Mon</th>
+                        <th>Tue</th>
+                        <th>Wed</th>
+                        <th>Thu</th>
+                        <th>Fri</th>
+                        <th>Sat</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- Week 1 -->
+                    <tr>
+                        <td><div class="date-number">1</div></td>
+                        <td><div class="date-number">2</div></td>
+                        <td><div class="date-number">3</div></td>
+                        <td><div class="date-number">4</div></td>
+                        <td><div class="date-number">5</div></td>
+                        <td><div class="date-number">6</div></td>
+                        <td class="valentine-week"><div class="date-number">7</div></td>
+                    </tr>
+                    <!-- Week 2 -->
+                    <tr>
+                        <td class="valentine-week"><div class="date-number">8</div></td>
+                        <td class="valentine-week"><div class="date-number">9</div></td>
+                        <td class="valentine-week"><div class="date-number">10</div></td>
+                        <td class="valentine-week"><div class="date-number">11</div></td>
+                        <td class="valentine-week"><div class="date-number">12</div></td>
+                        <td class="valentine-week"><div class="date-number">13</div></td>
+                        <td class="valentine-day"><div class="date-number">14</div></td>
+                    </tr>
+                    <!-- Week 3 -->
+                    <tr>
+                        <td><div class="date-number">15</div></td>
+                        <td><div class="date-number">16</div></td>
+                        <td><div class="date-number">17</div></td>
+                        <td><div class="date-number">18</div></td>
+                        <td><div class="date-number">19</div></td>
+                        <td><div class="date-number">20</div></td>
+                        <td><div class="date-number">21</div></td>
+                    </tr>
+                    <!-- Week 4 -->
+                    <tr>
+                        <td><div class="date-number">22</div></td>
+                        <td><div class="date-number">23</div></td>
+                        <td><div class="date-number">24</div></td>
+                        <td><div class="date-number">25</div></td>
+                        <td><div class="date-number">26</div></td>
+                        <td><div class="date-number">27</div></td>
+                        <td><div class="date-number">28</div></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+</body>
+</html>
